@@ -1,5 +1,4 @@
 import React from 'react';
-import ModelsApi from '../api/ModelsApi'
 
 function Home() {
   return (
