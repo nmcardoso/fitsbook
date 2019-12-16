@@ -38,7 +38,7 @@ class ModelCard extends React.Component {
 
     return (
       <Link to={`/stats/${id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-        <div className="card">
+        <div className={`card ${this.props.className}`}>
           <div className="card-body">
             <h5 className="title">
               {model.model.name}
