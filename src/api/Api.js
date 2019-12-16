@@ -3,7 +3,9 @@ class Api {
   // 'https://localhost:8000/api' : 'https://fitsbook.glitch.me/api';
 
   constructor() {
-    this.API_ROOT = 'https://fitsbook.glitch.me/api';
+    // this.API_ROOT = 'https://fitsbook.glitch.me/api';
+    this.API_ROOT = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
+      'http://localhost:8000/api' : 'https://fitsbook.glitch.me/api';
   }
 
   get(route) {
