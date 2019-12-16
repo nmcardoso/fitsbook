@@ -32,10 +32,6 @@ class Chart extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('prevProps', prevProps);
-    console.log('prevState', prevState);
-    console.log('this.props', this.props);
-
     if (this.props.data) {
       this.chartConfig.data.labels = this.props.data.labels;
       this.chartConfig.data.datasets = this.props.data.datasets;
