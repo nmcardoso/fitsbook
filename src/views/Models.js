@@ -11,13 +11,37 @@ class Models extends React.Component {
     };
   }
 
+  createTable(cards) {
+    const rows = [];
+
+    for (let i = 0; i < Math.ceil(cards.length / 2.0); i++) {
+      const cols = [];
+
+      for (let j = 0; j < 2; j++) {
+        cols.push(
+          <div key={`e-${i}-${j}`} className="col-md-6">
+            {cards[i]}
+          </div>
+        );
+      }
+
+      rows.push(
+        <div key={`e-${i}`} className="row">
+          {cols}
+        </div>
+      );
+    }
+
+    return rows;
+  }
+
   async componentDidMount() {
     const api = new ModelsApi();
     const models = await api.getModels();
 
     const cards = Object.keys(models).map(k => {
       return (
-        <ModelCard key={k} id={k} model={models[k]} />
+        <ModelCard key={k} id={k} model={models[k]} className="mb-2" />
       );
     });
 
@@ -29,7 +53,7 @@ class Models extends React.Component {
   render() {
     return (
       <div className="container mt-5">
-        {this.state.cards}
+        {this.createTable(this.state.cards)}
       </div>
     );
   }
