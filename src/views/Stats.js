@@ -2,6 +2,7 @@ import React from 'react';
 import ModelsApi from '../api/ModelsApi';
 import Chart from '../components/Chart';
 import HistoryParser from '../helpers/HistoryParser';
+import io from 'socket.io-client';
 
 class Stats extends React.Component {
   constructor(params) {
@@ -12,9 +13,10 @@ class Stats extends React.Component {
     this.state = {
       data: null
     }
+    this.socket = null;
   }
 
-  async componentDidMount() {
+  async drawChart() {
     const api = new ModelsApi();
     const history = await api.getHistory(this.params.id);
     const parser = new HistoryParser();
@@ -23,26 +25,38 @@ class Stats extends React.Component {
     this.setState({
       data: parsedHistory
     });
+  }
 
-    // const data = {
-    //   labels: [0, 1, 2, 3],
-    //   datasets: [{
-    //     label: 'Line',
-    //     data: [100, 200, 250, 300],
-    //     fill: false,
-    //     borderColor: 'rgb(75, 192, 192)',
-    //     backgroundColor: 'rgb(75, 192, 192)',
-    //     lineTension: 0
-    //   }]
-    // };
+  socketUpdate(newData) {
+    const oldData = this.state.data;
+    if (!oldData) {
+      this.drawChart();
+      return;
+    }
 
-    // setInterval(() => {
-    //   data.labels.push(data.labels[data.labels.length - 1] + 1);
-    //   data.datasets[0].data.push(Math.random() * 150);
-    //   this.setState({
-    //     data: data
-    //   });
-    // }, 1000);
+    const keys = Object.keys(newData.metrics);
+
+    oldData.datasets.forEach(dataset => {
+      if (keys.includes(dataset.label)) {
+        dataset.data.push(newData.metrics[dataset.label]);
+      }
+    });
+
+    oldData.labels.push(newData.epoch);
+
+    this.setState({
+      data: { ...oldData }
+    });
+  }
+
+  componentDidMount() {
+    this.socket = io('http://localhost:8000');
+    this.socket.on(`history-${this.params.id}`, (data) => {
+      console.log('socket data', data);
+      this.socketUpdate(data);
+    });
+
+    this.drawChart();
   }
 
   render() {
