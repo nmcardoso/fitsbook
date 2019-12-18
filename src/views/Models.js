@@ -16,10 +16,10 @@ class Models extends React.Component {
     for (let i = 0; i < Math.ceil(cards.length / 2.0); i++) {
       const cols = [];
 
-      for (let j = 0; j < 2; j++) {
+      for (let j = 0; j < 2 && 2 * i + j < cards.length; j++) {
         cols.push(
           <div key={`e-${i}-${j}`} className="col-md-6">
-            {cards[i]}
+            {cards[2 * i + j]}
           </div>
         );
       }
