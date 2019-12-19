@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fitsbook/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/fitsbook/static/js/main.678e66f0.chunk.js",
+    "main.js.map": "/fitsbook/static/js/main.678e66f0.chunk.js.map",
+    "runtime-main.js": "/fitsbook/static/js/runtime-main.b6f11cd7.js",
+    "runtime-main.js.map": "/fitsbook/static/js/runtime-main.b6f11cd7.js.map",
+    "static/js/2.970bd551.chunk.js": "/fitsbook/static/js/2.970bd551.chunk.js",
+    "static/js/2.970bd551.chunk.js.map": "/fitsbook/static/js/2.970bd551.chunk.js.map",
+    "index.html": "/fitsbook/index.html",
+    "precache-manifest.6a2ab8e311b58c17ba7e48e436dc6adb.js": "/fitsbook/precache-manifest.6a2ab8e311b58c17ba7e48e436dc6adb.js",
+    "service-worker.js": "/fitsbook/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/fitsbook/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.970bd551.chunk.js.LICENSE": "/fitsbook/static/js/2.970bd551.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b6f11cd7.js",
+    "static/js/2.970bd551.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.678e66f0.chunk.js"
+  ]
+}
