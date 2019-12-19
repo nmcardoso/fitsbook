@@ -14,7 +14,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - uses: actions/cache@v1
+      id: npmcache
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-node-
     - name: Install Packages
+      if: steps.npmcache.outputs.cache-hit != 'true'
       run: npm install
     - name: Deploy to GH Pages
       run: |
