@@ -23,7 +23,7 @@ jobs:
     - name: Install Packages
       if: steps.npmcache.outputs.cache-hit != 'true'
       run: npm ci
-    - name: Deploy to GH Pages
+    - name: Build & Deploy to GH Pages
       run: |
         git config --global user.email "deploy@example.com"
         git config --global user.name "GH Pages Deploy"
