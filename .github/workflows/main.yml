@@ -21,7 +21,9 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
         restore-keys: ${{ runner.os }}-npm-
     - name: Bin folder
-      run: ls ~/.npm/
+      run: |
+        ls ~/.npm/tmp
+        ls node_modules
     # - name: Install Packages
     #   if: steps.npmcache.outputs.cache-hit != 'true'
     #   run: npm ci
