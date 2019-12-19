@@ -1,12 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        <img src="/img/data_science_icon.svg" width="45" height="45" alt="" /> <span className="ml-1">Fitsbook</span>
-      </a>
+      <Link to="/" className="navbar-brand">
+        <img src={process.env.PUBLIC_URL + '/img/data_science_icon.svg'} width="45" height="45" alt="" />
+        <span className="ml-2">Fitsbook</span>
+      </Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span className="navbar-toggler-icon"></span>
