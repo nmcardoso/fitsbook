@@ -20,12 +20,14 @@ jobs:
         path: ~/.npm
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
         restore-keys: ${{ runner.os }}-npm-
-    - name: Install Packages
-      if: steps.npmcache.outputs.cache-hit != 'true'
-      run: npm ci
-    - name: Build & Deploy to GH Pages
-      run: |
-        git config --global user.email "deploy@example.com"
-        git config --global user.name "GH Pages Deploy"
-        git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/nmcardoso/fitsbook.git
-        npm run deploy
+    - name: Bin folder
+      run: echo `npm bin`
+    # - name: Install Packages
+    #   if: steps.npmcache.outputs.cache-hit != 'true'
+    #   run: npm ci
+    # - name: Build & Deploy to GH Pages
+    #   run: |
+    #     git config --global user.email "deploy@example.com"
+    #     git config --global user.name "GH Pages Deploy"
+    #     git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/nmcardoso/fitsbook.git
+    #     npm run deploy
