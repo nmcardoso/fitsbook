@@ -38,9 +38,9 @@ class Models extends React.Component {
     const api = new ModelsApi();
     const models = await api.getModels();
 
-    const cards = Object.keys(models).map(k => {
+    const cards = models.map(model => {
       return (
-        <ModelCard key={k} id={k} model={models[k]} className="mb-2" />
+        <ModelCard key={model.id} id={model.id} model={model} className="mb-2" />
       );
     });
 
