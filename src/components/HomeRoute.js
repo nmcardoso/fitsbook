@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Home() {
+function HomeRoute() {
   return (
     <div className="container mt-5">
       <div className="jumbotron">
@@ -11,4 +11,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeRoute;

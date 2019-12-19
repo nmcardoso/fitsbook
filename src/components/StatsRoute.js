@@ -1,10 +1,10 @@
 import React from 'react';
 import ModelsApi from '../api/ModelsApi';
-import Chart from '../components/Chart';
+import Chart from './Chart';
 import HistoryParser from '../helpers/HistoryParser';
 import io from 'socket.io-client';
 
-class Stats extends React.Component {
+class StatsRoute extends React.Component {
   constructor(params) {
     super(params);
     this.params = {
@@ -68,4 +68,4 @@ class Stats extends React.Component {
   }
 }
 
-export default Stats;
+export default StatsRoute;

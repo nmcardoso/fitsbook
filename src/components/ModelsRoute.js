@@ -1,8 +1,8 @@
 import React from 'react';
 import ModelsApi from '../api/ModelsApi';
-import ModelCard from '../components/ModelCard';
+import ModelCard from './ModelCard';
 
-class Models extends React.Component {
+class ModelsRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,4 +58,4 @@ class Models extends React.Component {
   }
 }
 
-export default Models;
+export default ModelsRoute;
