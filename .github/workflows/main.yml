@@ -18,11 +18,11 @@ jobs:
       id: npmcache
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-npm-
     - name: Install Packages
       if: steps.npmcache.outputs.cache-hit != 'true'
-      run: npm install
+      run: npm ci
     - name: Deploy to GH Pages
       run: |
         git config --global user.email "deploy@example.com"
