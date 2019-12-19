@@ -1,0 +1,24 @@
+name: GH Pages Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install Packages
+      run: npm install
+    - name: Deploy to GH Pages
+      run: |
+        git config --global user.email "deploy@example.com"
+        git config --global user.name "GH Pages Deploy"
+        git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/nmcardoso/fitsbook.git
+        npm run deploy
