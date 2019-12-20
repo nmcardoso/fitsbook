@@ -1,5 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TrainingLabel from './TrainingLabel';
+
+function DurationLabel(props) {
+  if (props.show) {
+    return (
+      <div className="d-inline">
+        <span className="text-muted font-weight-bold text-uppercase"> Duration: </span>
+        {props.duration}
+      </div>
+    );
+  }
+  return null;
+}
 
 class ModelCard extends React.Component {
   constructor(props) {
@@ -76,15 +89,16 @@ class ModelCard extends React.Component {
       <Link to={`/stats/${id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
         <div className={`card ${this.props.className}`}>
           <div className="card-body">
-            <h5 className="title">
-              {model.model.name}
-            </h5>
-            <small className="d-block card-text mb-0 pb-0">
-              Start: {this.formatDate(model.training_start)} &#x2022;
-              End: {this.formatDate(model.training_end)}
-            </small>
+            <div className="d-flex justify-content-between">
+              <h5 className="card-title">
+                {model.model.name}
+              </h5>
+              {!model.training_end && <TrainingLabel />}
+            </div>
             <small className="d-block card-text">
-              Elapsed Time: {this.elapsedTime(model.training_start, model.training_end)}
+              <span className="text-muted font-weight-bold text-uppercase">Started: </span>
+              {this.timeSince(model.training_start)} &#x2022;
+              <DurationLabel show={model.training_end} duration={this.elapsedTime(model.training_start, model.training_end)} />
             </small>
           </div>
         </div>
