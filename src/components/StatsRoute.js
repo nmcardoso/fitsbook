@@ -53,7 +53,7 @@ class StatsRoute extends React.Component {
   }
 
   async componentDidMount() {
-    this.socket = io('http://localhost:8000');
+    this.socket = io(new ModelsApi().SOCKET_URL);
     this.socket.on(`history-${this.params.id}`, (data) => {
       console.log('socket data', data);
       this.socketUpdate(data);
