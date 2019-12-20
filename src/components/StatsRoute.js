@@ -59,6 +59,10 @@ class StatsRoute extends React.Component {
     this.drawChart();
   }
 
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
   render() {
     return (
       <div className="container mt-5">
