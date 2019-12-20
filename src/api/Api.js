@@ -26,7 +26,7 @@ class Api {
       body
     };
 
-    return fetch(`${this.API_ROOT}/${route}`, init).then(res => res.json());
+    return fetch(`${this.API_ROOT}${route}`, init).then(res => res.json());
   }
 
   ping() {
