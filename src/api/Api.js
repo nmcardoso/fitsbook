@@ -29,6 +29,17 @@ class Api {
     return fetch(`${this.API_ROOT}${route}`, init).then(res => res.json());
   }
 
+  basePost(route, body) {
+    const init = {
+      method: 'POST',
+      mode: 'cors',
+      redirect: 'follow',
+      body
+    };
+
+    return fetch(`${this.API_ROOT}${route}`, init);
+  }
+
   ping() {
     fetch(`${this.API_ROOT}/ping`).then(res => res.text()).then(txt => {
       if (txt) return true;
