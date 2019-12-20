@@ -6,6 +6,8 @@ class Api {
     // this.API_ROOT = 'https://fitsbook.glitch.me/api';
     this.API_ROOT = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
       'http://localhost:8000/api' : 'https://fitsbook.glitch.me/api';
+    this.SOCKET_URL = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
+      'http://localhost:8000' : 'https://fitsbook.glitch.me';
   }
 
   get(route) {
