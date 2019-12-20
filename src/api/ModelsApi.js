@@ -12,6 +12,10 @@ class ModelsApi extends Api {
   getHistory(id) {
     return this.get(`/history/${id}`);
   }
+
+  stopTraining(id) {
+    return this.basePost(`/training/${id}/stop`).then(res => res.text());
+  }
 }
 
 export default ModelsApi;
