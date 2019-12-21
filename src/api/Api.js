@@ -17,7 +17,7 @@ class Api {
       redirect: 'follow'
     };
 
-    return fetch(`${this.API_ROOT}${route}`, init).then(res => res.json());
+    return fetch(`${this.API_ROOT}${route}`, init);
   }
 
   post(route, body) {
@@ -28,7 +28,7 @@ class Api {
       body
     };
 
-    return fetch(`${this.API_ROOT}${route}`, init).then(res => res.json());
+    return fetch(`${this.API_ROOT}${route}`, init);
   }
 
   basePost(route, body) {
