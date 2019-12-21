@@ -71,7 +71,7 @@ class SideModelInfo extends React.Component {
     if (model && Object.keys(model).length > 0) {
       return {
         'Name': model.optimizer.name,
-        'Learning Rate': model.optimizer.config.learning_rate | model.optimizer.config.lr,
+        'Learning Rate': model.optimizer.config.learning_rate || model.optimizer.config.lr,
         'Rho': model.optimizer.config.rho,
         'Decay': model.optimizer.config.decay,
         'Epsilon': model.optimizer.config.epsilon
