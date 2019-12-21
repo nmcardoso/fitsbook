@@ -31,13 +31,12 @@ class Api {
     return fetch(`${this.API_ROOT}${route}`, init);
   }
 
-  basePost(route, body) {
+  delete(route) {
     const init = {
-      method: 'POST',
+      method: 'DELETE',
       mode: 'cors',
-      redirect: 'follow',
-      body
-    };
+      redirect: 'follow'
+    }
 
     return fetch(`${this.API_ROOT}${route}`, init);
   }
