@@ -18,7 +18,7 @@ class ModelsApi extends Api {
   }
 
   deleteModel(id) {
-    return this.deleteModel(`/model/${id}`).then(res => res.text());
+    return this.delete(`/model/${id}`).then(res => res.text());
   }
 }
 
