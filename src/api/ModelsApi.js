@@ -14,7 +14,7 @@ class ModelsApi extends Api {
   }
 
   stopTraining(id) {
-    return this.basePost(`/training/${id}/stop`).then(res => res.text());
+    return this.post(`/training/${id}/stop`).then(res => res.text());
   }
 
   deleteModel(id) {
