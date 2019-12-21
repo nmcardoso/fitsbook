@@ -1,5 +1,6 @@
 import React from 'react';
 import './SideModelInfo.css';
+import ModelOptionsDropdown from './ModelOptionsDropdown';
 
 class SideModelInfo extends React.Component {
   createTable(data, keyPrefix) {
@@ -103,7 +104,10 @@ class SideModelInfo extends React.Component {
   render() {
     return (
       <div className="sideModelInfo mt-1">
-        <h5 className="mt-3">Model</h5>
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          <h5 className="mb-0">Model</h5>
+          <ModelOptionsDropdown id={this.props.model ? this.props.model.id : 0} />
+        </div>
         {this.createTable(this.parseModelData(), 'model')}
 
         <h5 className="mt-3">Layers</h5>
