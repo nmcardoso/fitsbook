@@ -36,7 +36,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5 pt-3">
-          <h3>Created With</h3>
+          <h3>Made With</h3>
           <div className="alert alert-secondary logos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-2">
             <a href="https://reactjs.org/" ref="0" data-toggle="tooltip" title="React">
               <img className="mx-3 my-2" src={root + '/img/logo_react.svg'} alt="React" />
