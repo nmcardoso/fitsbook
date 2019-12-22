@@ -1,12 +1,14 @@
 import React from 'react';
 import ModelsApi from '../api/ModelsApi';
 import ModelCard from './ModelCard';
+import Spinner from './Spinner';
 
 class ModelsRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: []
+      cards: [],
+      showSpinner: true
     };
   }
 
@@ -45,11 +47,20 @@ class ModelsRoute extends React.Component {
     });
 
     this.setState({
-      cards: cards
+      cards: cards,
+      showSpinner: false
     });
   }
 
   render() {
+    if (this.state.showSpinner) {
+      return (
+        <div className="container flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
+          <Spinner />
+        </div>
+      );
+    }
+
     return (
       <div className="container mt-5">
         {this.createTable(this.state.cards)}
