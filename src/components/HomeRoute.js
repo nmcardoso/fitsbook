@@ -36,7 +36,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5 pt-3">
-          <h3>Made With</h3>
+          <h5>Made With</h5>
           <div className="alert alert-secondary logos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-2">
             <a href="https://reactjs.org/" ref="0" data-toggle="tooltip" title="React">
               <img className="mx-3 my-2" src={root + '/img/logo_react.svg'} alt="React" />
@@ -60,7 +60,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5">
-          <h3>Powered By</h3>
+          <h5>Powered By</h5>
           <div className="alert alert-secondary logos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-2">
             <a href="https://pages.github.com/" ref="4" data-toggle="tooltip" title="Github Pages">
               <img className="mx-3 my-2" src={root + '/img/logo_ghpages.png'} alt="Github Pages" />
@@ -72,6 +72,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5">
+          <h5>Open Source</h5>
           <div className="alert alert-secondary repos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-3">
             <a className="d-flex flex-row align-items-center" href="https://github.com/nmcardoso/fitsbook">
               <img className="pr-2" width="30px" height="30px" src={root + '/img/logo_github.svg'} alt="Github" /> WebApp Repo
