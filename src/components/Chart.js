@@ -16,10 +16,24 @@ class Chart extends React.Component {
         datasets: []
       },
       options: {
+        title: {
+          display: true,
+          text: 'Metrics per Epoch Chart'
+        },
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: false
+            },
+            scaleLabel: {
+              display: false,
+              labelString: 'Percentage'
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Epoch'
             }
           }]
         },
