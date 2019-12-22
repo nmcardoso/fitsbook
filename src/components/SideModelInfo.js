@@ -59,8 +59,7 @@ class SideModelInfo extends React.Component {
       return {
         'Name': model.model.name,
         'Training Start': new Date(model.training_start).toLocaleString(),
-        'Training End': new Date(model.training_end).toLocaleString(),
-        'Duration': 'TODO'
+        'Training End': model.training_end ? new Date(model.training_end).toLocaleString() : null,
       };
     }
     return {};
