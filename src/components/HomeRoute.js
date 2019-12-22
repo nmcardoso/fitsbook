@@ -29,7 +29,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5 pt-3 description d-flex">
-          <span class="text-center">
+          <span className="text-center">
             Tool for generating real-time machine learning training statistics and storing model histories.
             Direct integration with Keras Framework.
           </span>
