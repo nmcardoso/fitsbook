@@ -9,7 +9,7 @@ class Spinner extends React.Component {
     }
     this.intervalId = setInterval(() => {
       this.setState({ show: true });
-    }, 200);
+    }, 400);
   }
 
   componentWillUnmount() {
