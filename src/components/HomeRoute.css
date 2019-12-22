@@ -1,0 +1,20 @@
+.HomeRoute .logos img {
+  max-width: 145px;
+  max-height: 55px;
+  height: auto;
+}
+
+.HomeRoute .repos a {
+  color: rgba(0, 0, 0, .7);
+  font-weight: bold;
+  transition: color ease .5s;
+}
+
+.HomeRoute .repos a:hover {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.HomeRoute .description {
+  font-size: 1.3rem;
+}
