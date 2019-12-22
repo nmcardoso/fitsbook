@@ -104,12 +104,12 @@ class StatsRoute extends React.Component {
             <Chart data={this.state.data} />
           </div>
           <div className="sidebar col-lg-3 pr-lg-0 d-none d-lg-block d-xl-block"> {/* for desktop */}
-            <div>
+            <div className="py-3">
               {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
               <SideModelInfo model={this.state.model} />
             </div>
           </div>
-          <div className="col-lg-3 d-lg-none d-xl-none"> {/* for mobile */}
+          <div className="col-lg-3 d-lg-none d-xl-none py-3"> {/* for mobile */}
             {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
             <SideModelInfo model={this.state.model} />
           </div>
