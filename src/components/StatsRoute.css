@@ -1,0 +1,14 @@
+.StatsRoute .sidebar {
+  position: relative;
+  height: 100%;
+}
+
+.StatsRoute .sidebar > div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  padding-right: 15px;
+}

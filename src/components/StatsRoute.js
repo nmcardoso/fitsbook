@@ -5,6 +5,7 @@ import HistoryParser from '../helpers/HistoryParser';
 import SideModelInfo from './SideModelInfo';
 import TrainingPanel from './TrainingPanel';
 import io from 'socket.io-client';
+import './StatsRoute.css';
 
 class StatsRoute extends React.Component {
   constructor(params) {
@@ -85,12 +86,18 @@ class StatsRoute extends React.Component {
     }
 
     return (
-      <div className="container-fluid">
-        <div className="row">
+      <div className="StatsRoute container-fluid flex-grow-1">
+        <div className="row h-100">
           <div className="col-lg-9 mt-5">
             <Chart data={this.state.data} />
           </div>
-          <div className="col-lg-3 h-100 pt-3">
+          <div className="sidebar col-lg-3 pr-lg-0 d-none d-lg-block d-xl-block"> {/* for desktop */}
+            <div>
+              {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
+              <SideModelInfo model={this.state.model} />
+            </div>
+          </div>
+          <div className="col-lg-3 d-lg-none d-xl-none"> {/* for mobile */}
             {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
             <SideModelInfo model={this.state.model} />
           </div>
