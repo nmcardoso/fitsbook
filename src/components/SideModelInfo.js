@@ -1,6 +1,7 @@
 import React from 'react';
 import './SideModelInfo.css';
 import ModelOptionsDropdown from './ModelOptionsDropdown';
+import DateTimeHelper from '../helpers/DateTimeHelper';
 
 class SideModelInfo extends React.Component {
   createTable(data, keyPrefix) {
@@ -54,12 +55,14 @@ class SideModelInfo extends React.Component {
 
   parseModelData() {
     const model = this.props.model;
+    const dth = new DateTimeHelper();
 
     if (model && Object.keys(model).length > 0) {
       return {
         'Name': model.model.name,
         'Training Start': new Date(model.training_start).toLocaleString(),
         'Training End': model.training_end ? new Date(model.training_end).toLocaleString() : null,
+        'Duration': model.training_end ? dth.elapsedTime(model.training_start, model.training_end) : null
       };
     }
     return {};
