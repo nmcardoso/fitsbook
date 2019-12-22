@@ -20,6 +20,10 @@ class ModelsApi extends Api {
   deleteModel(id) {
     return this.delete(`/model/${id}`).then(res => res.text());
   }
+
+  updateDescription(id, description) {
+    return this.post(`/model/${id}/description`, description).then(res => res.text());
+  }
 }
 
 export default ModelsApi;
