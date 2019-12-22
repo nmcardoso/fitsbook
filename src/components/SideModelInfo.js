@@ -118,8 +118,8 @@ class SideModelInfo extends React.Component {
   render() {
     const { model } = this.state;
     return (
-      <div className="sideModelInfo mt-1">
-        <div className="d-flex justify-content-between align-items-center mt-3">
+      <div className="sideModelInfo mt-2">
+        <div className="d-flex justify-content-between align-items-center">
           <h5 className="mb-0">Model</h5>
           <ModelOptionsDropdown model={model ? model : {}} updateParent={s => this.setState(s)} />
         </div>
