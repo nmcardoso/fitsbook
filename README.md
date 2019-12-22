@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/img/data_science_icon_circle_black.svg" height="80px" />
+  <img src="public/img/data_science_icon_square_black.svg" height="80px" />
 </p>
 
 # Fitsbook
