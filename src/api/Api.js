@@ -20,12 +20,15 @@ class Api {
     return fetch(`${this.API_ROOT}${route}`, init);
   }
 
-  post(route, body) {
+  post(route, body = {}) {
     const init = {
       method: 'POST',
       mode: 'cors',
       redirect: 'follow',
-      body
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
     };
 
     return fetch(`${this.API_ROOT}${route}`, init);
