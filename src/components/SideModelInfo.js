@@ -4,6 +4,19 @@ import ModelOptionsDropdown from './ModelOptionsDropdown';
 import DateTimeHelper from '../helpers/DateTimeHelper';
 
 class SideModelInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      model: props.model
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.model !== this.props.model) {
+      this.setState({ model: this.props.model });
+    }
+  }
+
   createTable(data, keyPrefix) {
     if (!data) return;
     const rows = Object.keys(data).map((k, i) => {
@@ -53,13 +66,13 @@ class SideModelInfo extends React.Component {
     );
   }
 
-  parseModelData() {
-    const model = this.props.model;
+  parseModelData(model) {
     const dth = new DateTimeHelper();
 
     if (model && Object.keys(model).length > 0) {
       return {
         'Name': model.model.name,
+        'Description': model.description,
         'Training Start': new Date(model.training_start).toLocaleString(),
         'Training End': model.training_end ? new Date(model.training_end).toLocaleString() : null,
         'Duration': model.training_end ? dth.elapsedTime(model.training_start, model.training_end) : null
@@ -68,9 +81,7 @@ class SideModelInfo extends React.Component {
     return {};
   }
 
-  parseOptimizerData() {
-    const model = this.props.model;
-
+  parseOptimizerData(model) {
     if (model && Object.keys(model).length > 0) {
       return {
         'Name': model.optimizer.name,
@@ -83,9 +94,7 @@ class SideModelInfo extends React.Component {
     return {};
   }
 
-  parseLayersData() {
-    const model = this.props.model;
-
+  parseLayersData(model) {
     if (model && Object.keys(model).length > 0) {
       return model.model.config.layers.map(layer => {
         return {
@@ -103,20 +112,24 @@ class SideModelInfo extends React.Component {
     return [];
   }
 
+  updateProps(props) {
+  }
+
   render() {
+    const { model } = this.state;
     return (
       <div className="sideModelInfo mt-1">
         <div className="d-flex justify-content-between align-items-center mt-3">
           <h5 className="mb-0">Model</h5>
-          <ModelOptionsDropdown id={this.props.model ? this.props.model.id : 0} />
+          <ModelOptionsDropdown model={model ? model : {}} updateParent={s => this.setState(s)} />
         </div>
-        {this.createTable(this.parseModelData(), 'model')}
+        {this.createTable(this.parseModelData(model), 'model')}
 
         <h5 className="mt-3">Layers</h5>
-        {this.drawLayers(this.parseLayersData(), 'layers')}
+        {this.drawLayers(this.parseLayersData(model), 'layers')}
 
         <h5 className="mt-3">Optimizer</h5>
-        {this.createTable(this.parseOptimizerData(), 'optimizer')}
+        {this.createTable(this.parseOptimizerData(model), 'optimizer')}
       </div>
     );
   }

@@ -12,8 +12,19 @@ class ModelOptionsDropdown extends React.Component {
 
   deleteModelHandler() {
     const api = new ModelsApi();
-    api.deleteModel(this.props.id);
+    api.deleteModel(this.props.model.id);
     this.setState({ redirect: true });
+  }
+
+  async editModelDescHandler() {
+    const desc = window.prompt('New description', this.props.model.description);
+
+    if (desc !== null) {
+      const api = new ModelsApi();
+      await api.updateDescription(this.props.model.id, { description: desc });
+      const model = await api.getModel(this.props.model.id);
+      this.props.updateParent({ model });
+    }
   }
 
   render() {
@@ -23,11 +34,14 @@ class ModelOptionsDropdown extends React.Component {
       );
     }
 
-    if (this.props.id) {
+    if (this.props.model.id) {
       return (
         <div className="dropdown">
           <i className="material-icons btn" id="dropdownMenuButton" data-toggle="dropdown">more_vert</i>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button className="dropdown-item d-inline-flex align-items-center pl-2" onClick={() => this.editModelDescHandler()}>
+              <i className="material-icons pr-1">edit</i> <span>Edit description</span>
+            </button>
             <button className="dropdown-item d-inline-flex align-items-center pl-2" onClick={() => this.deleteModelHandler()}>
               <i className="material-icons pr-1">delete</i> <span>Delete this model</span>
             </button>
