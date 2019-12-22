@@ -10,9 +10,9 @@ class ModelOptionsDropdown extends React.Component {
     };
   }
 
-  deleteModelHandler() {
+  async deleteModelHandler() {
     const api = new ModelsApi();
-    api.deleteModel(this.props.model.id);
+    await api.deleteModel(this.props.model.id);
     this.setState({ redirect: true });
   }
 
