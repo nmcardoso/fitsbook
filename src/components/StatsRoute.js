@@ -6,6 +6,7 @@ import SideModelInfo from './SideModelInfo';
 import TrainingPanel from './TrainingPanel';
 import io from 'socket.io-client';
 import './StatsRoute.css';
+import Spinner from './Spinner';
 
 class StatsRoute extends React.Component {
   constructor(params) {
@@ -14,7 +15,8 @@ class StatsRoute extends React.Component {
       id: params.match.params.id
     }
     this.state = {
-      data: null
+      data: null,
+      showSpinner: true
     }
     this.socket = null;
     this.model = null;
@@ -27,7 +29,8 @@ class StatsRoute extends React.Component {
     const parsedHistory = parser.parse(history);
 
     this.setState({
-      data: parsedHistory
+      data: parsedHistory,
+      showSpinner: false
     });
   }
 
@@ -49,7 +52,8 @@ class StatsRoute extends React.Component {
     oldData.labels.push(newData.epoch);
 
     this.setState({
-      data: { ...oldData }
+      data: { ...oldData },
+      showSpinner: false
     });
   }
 
@@ -69,7 +73,7 @@ class StatsRoute extends React.Component {
 
     const api = new ModelsApi();
     const model = await api.getModel(this.params.id);
-    this.setState({ model });
+    this.setState({ model, showSpinner: false });
 
     this.drawChart();
   }
@@ -83,6 +87,14 @@ class StatsRoute extends React.Component {
       if (condition) {
         return <TrainingPanel id={this.params.id} />;
       }
+    }
+
+    if (this.state.showSpinner) {
+      return (
+        <div className="container-fluid flex-grow-1 align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
+          <Spinner />
+        </div>
+      );
     }
 
     return (
