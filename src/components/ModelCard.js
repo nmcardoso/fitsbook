@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TrainingLabel from './TrainingLabel';
 import DateTimeHelper from './../helpers/DateTimeHelper';
+import './ModelCard.css';
 
 function DurationLabel(props) {
   if (props.show) {
@@ -26,23 +27,25 @@ class ModelCard extends React.Component {
     const dth = new DateTimeHelper();
 
     return (
-      <Link to={`/stats/${id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-        <div className={`card ${this.props.className}`}>
-          <div className="card-body">
-            <div className="d-flex justify-content-between">
-              <h5 className="card-title">
-                {model.model.name}
-              </h5>
-              {!model.training_end && <TrainingLabel />}
-            </div>
-            <small className="d-block card-text">
-              <span className="text-muted font-weight-bold text-uppercase">Started: </span>
-              {dth.timeSince(model.training_start)} &#x2022;
+      <div className="ModelCard">
+        <Link to={`/stats/${id}`}>
+          <div className={`card ${this.props.className}`}>
+            <div className="card-body">
+              <div className="d-flex justify-content-between">
+                <h5 className="card-title">
+                  {model.model.name}
+                </h5>
+                {!model.training_end && <TrainingLabel />}
+              </div>
+              <small className="d-block card-text">
+                <span className="text-muted font-weight-bold text-uppercase">Started: </span>
+                {dth.timeSince(model.training_start)} &#x2022;
               <DurationLabel show={model.training_end} duration={dth.elapsedTime(model.training_start, model.training_end)} />
-            </small>
+              </small>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     );
   }
 }
