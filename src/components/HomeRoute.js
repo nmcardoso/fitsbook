@@ -72,8 +72,7 @@ class HomeRoute extends React.Component {
         </div>
 
         <div className="mt-5">
-          <h3>Open Source</h3>
-          <div className="alert alert-secondary repos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2">
+          <div className="alert alert-secondary repos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-3">
             <a className="d-flex flex-row align-items-center" href="https://github.com/nmcardoso/fitsbook">
               <img className="pr-2" width="30px" height="30px" src={root + '/img/logo_github.svg'} alt="Github" /> WebApp Repo
             </a>
