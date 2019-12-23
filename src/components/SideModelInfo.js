@@ -113,7 +113,8 @@ class SideModelInfo extends React.Component {
     if (!config) return {};
 
     const dict = {
-      'lr': 'Learning Rate'
+      'lr': 'Learning Rate',
+      'dtype': 'Data Type'
     }
 
     return Object.keys(config).reduce((acc, key) => {
