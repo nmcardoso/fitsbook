@@ -117,13 +117,16 @@ class SideModelInfo extends React.Component {
     }
 
     return Object.keys(config).reduce((acc, key) => {
-      // Parse only first level
+      // Parse only first level, null are object type and will be rejected
       if (typeof config[key] !== 'string' &&
         typeof config[key] !== 'boolean' &&
         typeof config[key] !== 'number') return acc;
 
+      // Replace _ by space and captalize
       let newKey = key.replace('_', ' ').replace(/(?:^|\s)\S/g, c => c.toUpperCase());
+      // Replace key in dict
       newKey = newKey.toLocaleLowerCase() in dict ? dict[newKey.toLocaleLowerCase()] : newKey;
+      // Convert booleans to string
       acc[newKey] = String(config[key]);
       return acc;
     }, {});
