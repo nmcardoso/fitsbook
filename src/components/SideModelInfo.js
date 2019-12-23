@@ -112,9 +112,6 @@ class SideModelInfo extends React.Component {
     return [];
   }
 
-  updateProps(props) {
-  }
-
   render() {
     const { model } = this.state;
     return (
