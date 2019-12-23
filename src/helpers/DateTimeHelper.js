@@ -52,7 +52,7 @@ class DateTimeHelper {
     const days = Math.floor(delta / 86400);
     const hours = Math.floor(delta / 3600) % 24;
     const minutes = Math.floor(delta / 60) % 60;
-    const seconds = delta % 60;
+    const seconds = Math.round(delta % 60);
 
     let s = days > 0 ? days + ' days, ' : '';
     s += hours > 0 ? hours + 'h, ' : '';
