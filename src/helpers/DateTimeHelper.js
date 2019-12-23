@@ -20,27 +20,27 @@ class DateTimeHelper {
     const seconds = Math.floor((Date.now() - timestamp) / 1000);
 
     let interval = Math.floor(seconds / yearInSeconds);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + ' years ago';
     }
 
     interval = Math.floor(seconds / monthInSeconds);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + ' months ago';
     }
 
     interval = Math.floor(seconds / dayInSeconds);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + ' days ago';
     }
 
     interval = Math.floor(seconds / hourInSeconds);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + ' hours ago';
     }
 
     interval = Math.floor(seconds / minuteInSeconds);
-    if (interval > 1) {
+    if (interval >= 1) {
       return interval + ' minutes ago';
     }
 
