@@ -83,12 +83,10 @@ class SideModelInfo extends React.Component {
 
   parseOptimizerData(model) {
     if (model && Object.keys(model).length > 0) {
+      const config = this.parseConfig(model.optimizer.config);
       return {
         'Name': model.optimizer.name,
-        'Learning Rate': model.optimizer.config.learning_rate || model.optimizer.config.lr,
-        'Rho': model.optimizer.config.rho,
-        'Decay': model.optimizer.config.decay,
-        'Epsilon': model.optimizer.config.epsilon
+        ...config
       };
     }
     return {};
@@ -97,19 +95,38 @@ class SideModelInfo extends React.Component {
   parseLayersData(model) {
     if (model && Object.keys(model).length > 0) {
       return model.model.config.layers.map(layer => {
+        const config = this.parseConfig(layer.config);
         return {
           'className': layer.class_name,
           'info': {
-            'Trainable': String(layer.config.trainable),
-            'Data Type': layer.config.dtype,
-            'Units': layer.config.units,
-            'Activation': layer.config.activation,
-            'Input Shape': layer.config.batch_input_shape ? `(${String(layer.config.batch_input_shape)})` : null
+            // 'Trainable': String(layer.config.trainable),
+            'Input Shape': layer.config.batch_input_shape ? `(${String(layer.config.batch_input_shape)})` : null,
+            ...config,
           }
         };
       });
     }
     return [];
+  }
+
+  parseConfig(config) {
+    if (!config) return {};
+
+    const dict = {
+      'lr': 'Learning Rate'
+    }
+
+    return Object.keys(config).reduce((acc, key) => {
+      // Parse only first level
+      if (typeof config[key] !== 'string' &&
+        typeof config[key] !== 'boolean' &&
+        typeof config[key] !== 'number') return acc;
+
+      let newKey = key.replace('_', ' ').replace(/(?:^|\s)\S/g, c => c.toUpperCase());
+      newKey = newKey.toLocaleLowerCase() in dict ? dict[newKey.toLocaleLowerCase()] : newKey;
+      acc[newKey] = String(config[key]);
+      return acc;
+    }, {});
   }
 
   render() {
