@@ -1,6 +1,8 @@
 import React from 'react';
 import ModelsApi from '../api/ModelsApi';
 import { Redirect } from 'react-router-dom';
+import Icon from '@mdi/react';
+import { mdiDotsVertical, mdiPencil, mdiDelete } from '@mdi/js';
 
 class ModelOptionsDropdown extends React.Component {
   constructor(props) {
@@ -37,13 +39,15 @@ class ModelOptionsDropdown extends React.Component {
     if (this.props.model.id) {
       return (
         <div className="dropdown">
-          <i className="material-icons btn" id="dropdownMenuButton" data-toggle="dropdown">more_vert</i>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div className="btn" id="dropdownMenuButton" data-toggle="dropdown">
+            <Icon path={mdiDotsVertical} size={1} />
+          </div>
+          <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <button className="dropdown-item d-inline-flex align-items-center pl-2" onClick={() => this.editModelDescHandler()}>
-              <i className="material-icons pr-1">edit</i> <span>Edit description</span>
+              <span className="pr-1 align-middle"><Icon path={mdiPencil} size={.7} className="d-block" /></span> <span>Edit description</span>
             </button>
             <button className="dropdown-item d-inline-flex align-items-center pl-2" onClick={() => this.deleteModelHandler()}>
-              <i className="material-icons pr-1">delete</i> <span>Delete this model</span>
+              <span className="pr-1"><Icon path={mdiDelete} size={.7} className="d-block" /></span> <span>Delete this model</span>
             </button>
           </div>
         </div>
