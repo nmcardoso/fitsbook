@@ -91,7 +91,7 @@ class StatsRoute extends React.Component {
 
     if (this.state.showSpinner) {
       return (
-        <div className="container-fluid flex-grow-1 align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
+        <div className="container-fluid flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
           <Spinner />
         </div>
       );
