@@ -38,7 +38,8 @@ class Chart extends React.Component {
           }]
         },
         aspectRatio: 1.75,
-        responsive: true
+        responsive: true,
+        maintainAspectRatio: false
       }
     };
 
@@ -55,7 +56,12 @@ class Chart extends React.Component {
 
   render() {
     return (
-      <div style={{ width: this.props.width, height: this.props.height }}>
+      <div style={{
+        width: this.props.width,
+        height: this.props.height,
+        minWidth: this.props.minWidth,
+        minHeight: this.props.minHeight
+      }}>
         <canvas id="react-chart" />
       </div>
     );
