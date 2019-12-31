@@ -24,7 +24,8 @@ class Chart extends React.Component {
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: false
+              beginAtZero: false,
+              fontColor: '#333'
             },
             scaleLabel: {
               display: false,
@@ -32,6 +33,9 @@ class Chart extends React.Component {
             }
           }],
           xAxes: [{
+            ticks: {
+              fontColor: '#333'
+            },
             scaleLabel: {
               display: true,
               labelString: 'Epoch'
