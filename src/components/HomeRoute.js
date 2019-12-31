@@ -44,6 +44,9 @@ class HomeRoute extends React.Component {
             <a href="https://getbootstrap.com/" ref="1" data-toggle="tooltip" title="Bootstrap">
               <img className="mx-3 my-2" src={root + '/img/logo_bootstrap4.svg'} alt="Bootstrap" />
             </a>
+            <a href="https://www.chartjs.org/" ref="8" data-toggle="tooltip" title="Chartjs">
+              <img className="mx-3 my-2" src={root + '/img/logo_chartjs.svg'} alt="Chartjs" />
+            </a>
             <a href="https://www.sqlite.org/index.html" ref="2" data-toggle="tooltip" title="SqLite">
               <img className="mx-3 my-2" src={root + '/img/logo_sqlite.svg'} alt="Sqlite" />
             </a>
