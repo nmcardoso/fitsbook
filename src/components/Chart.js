@@ -1,5 +1,6 @@
 import React from 'react';
 import ChartJS from 'chart.js';
+import './Chart.css';
 
 class Chart extends React.Component {
   constructor(props) {
@@ -56,12 +57,7 @@ class Chart extends React.Component {
 
   render() {
     return (
-      <div style={{
-        width: this.props.width,
-        height: this.props.height,
-        minWidth: this.props.minWidth,
-        minHeight: this.props.minHeight
-      }}>
+      <div className="ChartWrapper">
         <canvas id="react-chart" />
       </div>
     );

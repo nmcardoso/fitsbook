@@ -1,0 +1,10 @@
+.ChartWrapper {
+  min-height: 460px;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .ChartWrapper {
+    min-height: 90%;
+  }
+}

@@ -100,8 +100,8 @@ class StatsRoute extends React.Component {
     return (
       <div className="StatsRoute container-fluid flex-grow-1">
         <div className="row h-100">
-          <div className="col-lg-9 mt-2 mt-lg-5">
-            <Chart data={this.state.data} minHeight='460px' />
+          <div className="col-lg-9 mt-2 mt-lg-0 d-flex align-items-center justify-content-center">
+            <Chart data={this.state.data} />
           </div>
           <div className="sidebar col-lg-3 pr-lg-0 d-none d-lg-block d-xl-block"> {/* for desktop */}
             <div className="py-3">
