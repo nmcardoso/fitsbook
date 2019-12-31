@@ -49,6 +49,11 @@ class Chart extends React.Component {
             hitRadius: 5
           }
         },
+        tooltips: {
+          intersect: false,
+          mode: 'index',
+          axis: 'x',
+          position: 'nearest'
         },
         aspectRatio: 1.75,
         responsive: true,
