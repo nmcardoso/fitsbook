@@ -42,6 +42,14 @@ class Chart extends React.Component {
             }
           }]
         },
+        elements: {
+          point: {
+            radius: 1,
+            hoverRadius: 4,
+            hitRadius: 5
+          }
+        },
+        },
         aspectRatio: 1.75,
         responsive: true,
         maintainAspectRatio: false
