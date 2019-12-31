@@ -76,14 +76,14 @@ class HomeRoute extends React.Component {
 
         <div className="mt-5">
           <h5>Open Source</h5>
-          <div className="alert alert-secondary repos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-3">
-            <a className="d-flex flex-row align-items-center" href="https://github.com/nmcardoso/fitsbook">
+          <div className="alert alert-secondary repos d-flex flex-row flex-wrap justify-content-around align-items-center mt-2 py-2">
+            <a className="d-flex flex-row align-items-center my-2" href="https://github.com/nmcardoso/fitsbook">
               <img className="pr-2" width="30px" height="30px" src={root + '/img/logo_github.svg'} alt="Github" /> WebApp Repo
             </a>
-            <a className="d-flex flex-row align-items-center" href="https://github.com/nmcardoso/fitsbook-server">
+            <a className="d-flex flex-row align-items-center my-2" href="https://github.com/nmcardoso/fitsbook-server">
               <img className="pr-2" width="30px" height="30px" src={root + '/img/logo_github.svg'} alt="Github" /> API Repo
             </a>
-            <a className="d-flex flex-row align-items-center" href="https://github.com/nmcardoso/fitsbook-python">
+            <a className="d-flex flex-row align-items-center my-2" href="https://github.com/nmcardoso/fitsbook-python">
               <img className="pr-2" width="30px" height="30px" src={root + '/img/logo_github.svg'} alt="Github" /> Python Library Repo
             </a>
           </div>
