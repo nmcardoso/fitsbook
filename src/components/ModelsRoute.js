@@ -1,7 +1,9 @@
 import React from 'react';
+import io from 'socket.io-client';
 import ModelsApi from '../api/ModelsApi';
 import ModelCard from './ModelCard';
 import Spinner from './Spinner';
+import Navbar from './Navbar';
 
 class ModelsRoute extends React.Component {
   constructor(props) {
@@ -36,7 +38,7 @@ class ModelsRoute extends React.Component {
     return rows;
   }
 
-  async componentDidMount() {
+  async loadModels() {
     const api = new ModelsApi();
     const models = await api.getModels();
 
@@ -52,19 +54,39 @@ class ModelsRoute extends React.Component {
     });
   }
 
+  async componentDidMount() {
+    await this.loadModels();
+    this.socket = io(new ModelsApi().SOCKET_URL);
+    this.socket.on('models', data => {
+      if (data === 'new') {
+        this.loadModels();
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
   render() {
     if (this.state.showSpinner) {
       return (
-        <div className="container flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
-          <Spinner />
-        </div>
+        <>
+          <Navbar />
+          <div className="container flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
+            <Spinner />
+          </div>
+        </>
       );
     }
 
     return (
-      <div className="container mt-5">
-        {this.createTable(this.state.cards)}
-      </div>
+      <>
+        <Navbar />
+        <div className="container mt-5">
+          {this.createTable(this.state.cards)}
+        </div>
+      </>
     );
   }
 }

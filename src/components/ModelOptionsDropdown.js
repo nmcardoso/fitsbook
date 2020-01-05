@@ -3,6 +3,7 @@ import ModelsApi from '../api/ModelsApi';
 import { Redirect } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiDotsVertical, mdiPencil, mdiDelete } from '@mdi/js';
+import UnauthorizedAlert from '../helpers/UnauthorizedAlert';
 
 class ModelOptionsDropdown extends React.Component {
   constructor(props) {
@@ -13,9 +14,15 @@ class ModelOptionsDropdown extends React.Component {
   }
 
   async deleteModelHandler() {
+    if (!window.confirm('Are you sure you want to delete this model?')) return;
+
     const api = new ModelsApi();
-    await api.deleteModel(this.props.model.id);
-    this.setState({ redirect: true });
+    const code = await api.deleteModel(this.props.model.id);
+    if (code === 200) {
+      this.setState({ redirect: true });
+    } else {
+      UnauthorizedAlert();
+    }
   }
 
   async editModelDescHandler() {
@@ -23,9 +30,13 @@ class ModelOptionsDropdown extends React.Component {
 
     if (desc !== null) {
       const api = new ModelsApi();
-      await api.updateDescription(this.props.model.id, { description: desc });
-      const model = await api.getModel(this.props.model.id);
-      this.props.updateParent({ model });
+      const code = await api.updateDescription(this.props.model.id, { description: desc });
+      if (code === 200) {
+        const model = await api.getModel(this.props.model.id);
+        this.props.updateParent({ model });
+      } else {
+        UnauthorizedAlert();
+      }
     }
   }
 

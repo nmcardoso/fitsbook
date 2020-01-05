@@ -14,15 +14,15 @@ class ModelsApi extends Api {
   }
 
   stopTraining(id) {
-    return this.post(`/training/${id}/stop`).then(res => res.text());
+    return this.post(`/training/${id}/stop`).then(res => res.status);
   }
 
   deleteModel(id) {
-    return this.delete(`/model/${id}`).then(res => res.text());
+    return this.delete(`/model/${id}`).then(res => res.status);
   }
 
   updateDescription(id, description) {
-    return this.post(`/model/${id}/description`, description).then(res => res.text());
+    return this.post(`/model/${id}/description`, description).then(res => res.status);
   }
 }
 

@@ -7,6 +7,7 @@ import TrainingPanel from './TrainingPanel';
 import io from 'socket.io-client';
 import './StatsRoute.css';
 import Spinner from './Spinner';
+import Navbar from './Navbar';
 
 class StatsRoute extends React.Component {
   constructor(params) {
@@ -91,30 +92,36 @@ class StatsRoute extends React.Component {
 
     if (this.state.showSpinner) {
       return (
-        <div className="container-fluid flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
-          <Spinner />
-        </div>
+        <>
+          <Navbar />
+          <div className="container-fluid flex-grow-1 d-flex align-items-center justify-content-center" style={{ marginTop: '-42px' }}>
+            <Spinner />
+          </div>
+        </>
       );
     }
 
     return (
-      <div className="StatsRoute container-fluid flex-grow-1">
-        <div className="row h-100">
-          <div className="col-lg-9 mt-2 mt-lg-0 d-flex align-items-center justify-content-center">
-            <Chart data={this.state.data} />
-          </div>
-          <div className="sidebar col-lg-3 pr-lg-0 d-none d-lg-block d-xl-block"> {/* for desktop */}
-            <div className="py-3">
+      <>
+        <Navbar />
+        <div className="StatsRoute container-fluid flex-grow-1">
+          <div className="row h-100">
+            <div className="col-lg-9 mt-2 mt-lg-0 d-flex align-items-center justify-content-center">
+              <Chart data={this.state.data} />
+            </div>
+            <div className="sidebar col-lg-3 pr-lg-0 d-none d-lg-block d-xl-block"> {/* for desktop */}
+              <div className="py-3">
+                {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
+                <SideModelInfo model={this.state.model} />
+              </div>
+            </div>
+            <div className="col-lg-3 d-lg-none d-xl-none py-3"> {/* for mobile */}
               {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
               <SideModelInfo model={this.state.model} />
             </div>
           </div>
-          <div className="col-lg-3 d-lg-none d-xl-none py-3"> {/* for mobile */}
-            {renderTrainingPanel(this.state.model && !this.state.model.training_end)}
-            <SideModelInfo model={this.state.model} />
-          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

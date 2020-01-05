@@ -1,3 +1,5 @@
+import UserSingleton from "../helpers/UserSingleton";
+
 class Api {
   // API_ROOT = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
   // 'https://localhost:8000/api' : 'https://fitsbook.glitch.me/api';
@@ -10,11 +12,20 @@ class Api {
       'http://localhost:8000' : 'https://fitsbook.glitch.me';
   }
 
+  _getAuthHeaders() {
+    const userSingleton = new UserSingleton();
+    return {
+      'X-Fitsbook-Token': userSingleton.getToken(),
+      'X-Fitsbook-UID': userSingleton.getUserId()
+    };
+  }
+
   get(route) {
     const init = {
       method: 'GET',
       mode: 'cors',
-      redirect: 'follow'
+      redirect: 'follow',
+      headers: this._getAuthHeaders()
     };
 
     return fetch(`${this.API_ROOT}${route}`, init);
@@ -26,7 +37,8 @@ class Api {
       mode: 'cors',
       redirect: 'follow',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...this._getAuthHeaders()
       },
       body: JSON.stringify(body)
     };
@@ -38,7 +50,8 @@ class Api {
     const init = {
       method: 'DELETE',
       mode: 'cors',
-      redirect: 'follow'
+      redirect: 'follow',
+      headers: this._getAuthHeaders()
     }
 
     return fetch(`${this.API_ROOT}${route}`, init);
