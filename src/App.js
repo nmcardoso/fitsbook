@@ -4,6 +4,7 @@ import HomeRoute from './components/HomeRoute';
 import ModelsRoute from './components/ModelsRoute';
 import StatsRoute from './components/StatsRoute';
 import LoginRoute from './components/LoginRoute';
+import LogoutRoute from './components/LogoutRoute';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/models' component={ModelsRoute} />
         <Route path='/stats/:id' component={StatsRoute} />
         <Route path="/login" component={LoginRoute} />
+        <Route path="/logout" component={LogoutRoute} />
       </Switch>
     </div>
   );
