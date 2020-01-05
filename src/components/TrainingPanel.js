@@ -1,6 +1,7 @@
 import React from 'react';
 import TrainingLabel from './TrainingLabel';
 import ModelsApi from '../api/ModelsApi';
+import UnauthorizedAlert from '../helpers/UnauthorizedAlert';
 
 function StopSignalNotification(props) {
   return (
@@ -20,10 +21,11 @@ class TrainingPanel extends React.Component {
 
   async stopTrainingClickHandler() {
     const api = new ModelsApi();
-    const r = await api.stopTraining(this.props.id);
-    console.log(r);
-    if (r === 'OK') {
+    const code = await api.stopTraining(this.props.id);
+    if (code === 200) {
       this.setState({ showStopSignalNotification: true });
+    } else {
+      UnauthorizedAlert();
     }
   }
 
