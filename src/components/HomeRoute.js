@@ -53,11 +53,11 @@ class HomeRoute extends React.Component {
               <a href="https://www.sqlite.org/index.html" ref="2" data-toggle="tooltip" title="SqLite">
                 <img className="mx-3 my-2" src={root + '/img/logo_sqlite.svg'} alt="Sqlite" />
               </a>
-              <a href="https://expressjs.com/" ref="3" data-toggle="tooltip" title="Express">
-                <img className="mx-3 my-2" src={root + '/img/logo_express.svg'} alt="Express" />
-              </a>
               <a href="https://socket.io/" ref="7" data-toggle="tooltip" title="Socket.io">
                 <img className="mx-3 my-2" src={root + '/img/logo_socketio.svg'} alt="Socket.io" />
+              </a>
+              <a href="https://expressjs.com/" ref="3" data-toggle="tooltip" title="Express">
+                <img className="mx-3 my-2" src={root + '/img/logo_express.svg'} alt="Express" />
               </a>
               <a href="https://keras.io/" ref="6" data-toggle="tooltip" title="Keras">
                 <img className="mx-3 my-2" src={root + '/img/logo_keras.jpg'} alt="Keras" />
