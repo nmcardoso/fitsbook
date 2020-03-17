@@ -19,7 +19,7 @@ class Chart extends React.Component {
       options: {
         title: {
           display: true,
-          text: 'Metrics per Epoch Chart'
+          text: 'Metrics per Epoch'
         },
         scales: {
           yAxes: [{
