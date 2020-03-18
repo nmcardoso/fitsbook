@@ -29,7 +29,7 @@ class Chart extends React.Component {
             },
             scaleLabel: {
               display: false,
-              labelString: 'Percentage'
+              labelString: 'Metric'
             }
           }],
           xAxes: [{
