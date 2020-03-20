@@ -48,7 +48,7 @@ class HistoryParser {
     }, {});
 
     const labels = data.map(r => {
-      return r.epoch;
+      return r.epoch + 1;
     })
 
     this.datasets.forEach(dataset => {
