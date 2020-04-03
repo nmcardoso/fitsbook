@@ -1,6 +1,7 @@
 import React from 'react';
 import ChartJS from 'chart.js';
 import './Chart.css';
+import 'chartjs-plugin-zoom';
 
 class Chart extends React.Component {
   constructor(props) {
