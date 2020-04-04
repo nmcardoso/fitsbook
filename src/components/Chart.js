@@ -58,7 +58,35 @@ class Chart extends React.Component {
         },
         aspectRatio: 1.75,
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        plugins: {
+          zoom: {
+            pan: {
+              enabled: true,
+              mode: 'x',
+              rangeMin: {
+                x: 0
+              },
+              rangeMax: {
+                x: null
+              },
+              speed: 10
+            },
+            zoom: {
+              enabled: true,
+              drag: false,
+              mode: 'x',
+              rangeMin: {
+                x: 0
+              },
+              rangeMax: {
+                x: null
+              },
+              speed: 0.1,
+              sensitivity: 3
+            }
+          }
+        }
       }
     };
 
