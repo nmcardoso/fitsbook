@@ -91,6 +91,7 @@ class Chart extends React.Component {
     };
 
     this.chartInstance = new ChartJS(ctx, this.chartConfig);
+    ctx.addEventListener('dblclick', () => this.chartInstance.resetZoom())
   }
 
   componentDidUpdate(prevProps, prevState) {
