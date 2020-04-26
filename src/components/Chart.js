@@ -82,8 +82,7 @@ class Chart extends React.Component {
               rangeMax: {
                 x: null
               },
-              speed: 5,
-              sensitivity: 3
+              speed: 20,
             }
           }
         }
