@@ -83,6 +83,7 @@ class Chart extends React.Component {
                 x: null
               },
               speed: 20,
+              sensitivity: .05
             }
           }
         }
