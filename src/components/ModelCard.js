@@ -33,7 +33,7 @@ class ModelCard extends React.Component {
             <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h5 className="card-title">
-                  {model.model.name}
+                  {model.name}
                 </h5>
                 {!model.training_end && <TrainingLabel />}
               </div>

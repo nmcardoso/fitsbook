@@ -40,7 +40,7 @@ class ModelsRoute extends React.Component {
 
   async loadModels() {
     const api = new ModelsApi();
-    const models = await api.getModels();
+    const models = await api.getModelsList();
 
     const cards = models.map(model => {
       return (

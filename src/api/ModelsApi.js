@@ -5,6 +5,10 @@ class ModelsApi extends Api {
     return this.get('/models').then(res => res.json());
   }
 
+  getModelsList() {
+    return this.get('/models/list').then(res => res.json());
+  }
+
   getModel(id) {
     return this.get(`/model/${id}`).then(res => res.json());
   }
