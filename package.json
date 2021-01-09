@@ -2,7 +2,7 @@
   "name": "fitsbook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://natan.ninja",
+  "homepage": "https://nmcardoso.github.io/fitsbook/",
   "dependencies": {
     "@mdi/js": "^4.7.95",
     "@mdi/react": "^1.2.1",
